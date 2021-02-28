@@ -1,0 +1,39 @@
+%Casey Nolte
+%CHME 312, February 25th, 2021
+
+%Parameters
+mu0 = 60;
+mua = 57; 
+n = 20;
+variance = 9;
+mean = 58.7;
+alpha = .05;
+
+%The ttest function can not be used, becauase you need the actual data set
+%as an input and not just its parameters. 
+
+% a)
+t_test = (mean - mu0) / (3 / sqrt(n));
+disp(['The t-test value is ', num2str(t_test) , '.']);
+
+% b) 
+power = sampsizepwr('t',[mu0, 3],mua,[],20);
+disp(['The test power is ', num2str(power) , '.']);
+
+% c) 
+criticalLeft = tinv(.025,19);
+criticalRight = tinv(.975, 19);
+reject = ~(t_test > criticalLeft & t_test < criticalRight);
+disp(['The null hypothesis is rejected: ', mat2str(reject) , '.']);
+
+% d) 
+t_test2 = (mean - mu0) / (3 / sqrt(5));
+disp(['The t-test value with is ', num2str(t_test2) , '.']);
+
+
+
+
+
+
+
+
